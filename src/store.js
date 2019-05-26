@@ -25,6 +25,11 @@ export default new Vuex.Store({
     loginError(state) {
       state.isLogin = false;
       state.isLoginError = true;
+    },
+    logout(state) {
+      state.isLogin = false;
+      state.isLoginError = false;
+      state.userInfo = null;
     }
   },
   actions: {
@@ -42,6 +47,10 @@ export default new Vuex.Store({
         router.push({ name: "mypage" });
       }
       //그 유저의 비밀번호와 입력된 비밀번호를 비교한다.
+    },
+    logout({ commit }) {
+      commit("logout");
+      router.push({ name: "home" });
     }
   }
 });
